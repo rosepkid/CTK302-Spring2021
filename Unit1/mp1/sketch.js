@@ -5,7 +5,7 @@ function setup() {
 }
 
 function draw() {
-  background('blue');
+  background('#42248f');
   noStroke();
 
     fill('yellow');
