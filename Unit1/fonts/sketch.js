@@ -16,5 +16,5 @@ function draw() {
   text("hello", width / 2, height / 2);
 
   textFont(f2, 32);
-  text("world", width / 2, height / 2 + 50);
+  text("World!", width / 2, height / 2 + 50);
 }
