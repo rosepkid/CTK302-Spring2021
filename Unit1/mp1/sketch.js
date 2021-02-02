@@ -30,6 +30,9 @@ function draw() {
   rect(0, 360, 720, 40);
 
   fill('light blue');
-  text("Lorem ipsum dolor\nsit\' amet, consectetur\' adipiscing elit. Nulla a erat at lorem scelerisque rutrum id ut lacus. Suspendisse eget massa sit amet lacus ullamcorper fermentum vel in purus. Vivamus porta laoreet augue. Ut dictum, tortor convallis efficitur ultricies, ipsum arcu suscipit felis, eu mollis leo erat sed nisl. Sed condimentum justo mollis lectus ultricies, non dignissim sapien luctus. Nunc elementum iaculis orci, sed venenatis tellus elementum id. Nunc commodo velit sit amet justo lobortis, sit \namet vulputate est laoreet. Nam sit amet iaculis dolor. Maecenas imperdiet cursus mollis. Donec vehicula ornare lectus, sit amet vehicula lectus vehicula non.", 40, 40, 680, 400);
+
+  text("hello world", 10, 10, 500, 300) ;
+
+  text("Lorem ipsum dolor\n consectetur adipiscing elit.\n Nulla a erat at lorem scelerisque rutrum id ut lacus. Suspendisse eget massa sit amet lacus ullamcorper fermentum vel in purus. Vivamus porta laoreet augue. Ut dictum, tortor convallis efficitur ultricies, ipsum arcu suscipit felis, eu mollis leo erat sed nisl. Sed condimentum justo mollis lectus ultricies, non dignissim sapien luctus. Nunc elementum iaculis orci, sed venenatis tellus elementum id. Nunc commodo velit sit amet justo lobortis, sit amet vulputate est laoreet. Nam sit amet iaculis dolor. Maecenas imperdiet cursus mollis. Donec vehicula ornare lectus, sit amet vehicula lectus vehicula non.", 40, 40, 400, 400);
 
 }
