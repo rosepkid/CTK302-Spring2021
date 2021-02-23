@@ -15,16 +15,12 @@ function setup() {
 function draw() {
   background(100);
 
-  // I do not think this is optimized.
-
   if (!(mouseIsPressed) && (sPressed.isPlaying())) {
     sPressed.pause();
     sNotPressed.loop();
     print("triggering Non-Pressed song");
 
-  }
-
-  if ((mouseIsPressed) && (sNotPressed.isPlaying())) {
+  } else if ((mouseIsPressed) && (sNotPressed.isPlaying())) {
     sNotPressed.pause();
     sPressed.loop();
     print("triggering Pressed song");
