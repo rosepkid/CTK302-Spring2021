@@ -36,5 +36,6 @@ function draw() {
 //   arc(479, 300, 280, 280, PI, TWO_PI);
 
   fill('white') ;
+
   text(mouseX + ', ' + mouseY, 20, 20) ;
 }
