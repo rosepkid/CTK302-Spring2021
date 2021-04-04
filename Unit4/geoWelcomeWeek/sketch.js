@@ -20,8 +20,7 @@ function setup() {
   createCanvas(displayWidth, displayHeight);
   num = 0;
   intervalCurrentPosition(positionPing, 5000);
-  places.push(new Place(40.47859881213726, -88.96815846900026, "Emily's Room", .02, reggieImg)); // new Place object, for CVA room 17
-  places.push(new Place(40.47859881213726, -88.96815846900026, "Rose's Room", .02, reggieImg)); // new Place object, for CVA room 17
+    places.push(new Place(40.47859881213726, -88.96815846900026, "Rose's House", .02, reggieImg)); // new Place object, for CVA room 17
 
   places.push(new Place(40.50622797365503, -88.99051350503431, "CVA 17", .02, reggieImg)); // new Place object, for CVA room 17
   places.push(new Place(40.50715473783438, -88.99173550368103, "COB", .02, reggieImg)); // new Place object, for COB.... JUST SWITCHED TO NEW COORDINATES
