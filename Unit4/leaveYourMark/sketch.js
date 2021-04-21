@@ -10,7 +10,7 @@ let places = [];
 let lat = 0;
 let long = 0;
 let num = 0;
-let myPlace = 'loading place';
+let myLocation = 'loading place';
 
 function preload() {
   locationData = getCurrentPosition();
@@ -72,7 +72,8 @@ function draw() {
   // image(avengerslogo, width/2, height/2, 900, 900);
 
   textAlign(CENTER);
-  // // iterate through the bubbles and display the objects!
+
+  // // iterate through the bubbles and display the objects if their places match myPlace!
   for (let i = 0; i < bubbles.length; i++) {
     bubbles[i].display();
     bubbles[i].move();
@@ -83,7 +84,7 @@ function draw() {
   text("lat: " + lat, 10, 340);
   text("long: " + long, 10, 360);
   text("number of updates: " + num, 10, 380);
-  text("place: " + myPlace, 10, 400);
+  text("place: " + myLocation, 10, 400);
 }
 
 function positionPing(position) {
@@ -100,7 +101,7 @@ function positionPing(position) {
   for (var i = 0; i < places.length; i++) {
     if (places[i].fence.insideFence === true) {
       //  places[i].display();
-      myPlace = places[i].desc;
+      myLocation = places[i].desc;
       break; //should break out of the for loop?
       //text(places[i].desc + ' check1 ' + places[i].fence.insideFence, 10, 240 + (i * 28));
     }
@@ -115,7 +116,8 @@ class Bubble {
     this.name = myName;
     this.major = myMajor;
     this.quote = myQuote;
-    this.hint = myHint;
+
+    this.place = myHint.replace(/'/g,'');
     this.pos = createVector(random(width), random(height));
     this.vel = createVector(random(-5, 5), random(-5, 5));
   }
@@ -134,12 +136,19 @@ class Bubble {
     // if(this.element == 'Air') image(air, this.pos.x, this.pos.y, 100, 100);
 
     //rect(this.pos.x, this.pos.y, 100, 100);
+
+    if (myLocation == this.place) {
+      fill('white');
+    } else {
+      fill('grey');
+    }
+
     textFont(f1);
-    fill('white');
+
     text(this.name, this.pos.x, this.pos.y - 25);
     text(this.major, this.pos.x, this.pos.y);
     text(this.quote, this.pos.x, this.pos.y + 25);
-    text(this.hint, this.pos.x, this.pos.y + 50);
+    text(this.place, this.pos.x, this.pos.y + 50);
 
 
   }
@@ -157,7 +166,7 @@ class Bubble {
 
 
 function pushPlaces() {
-  places.push(new Place(40.47859881213726, -88.96815846900026, "Rose's House", .02)); // new Place object, for CVA room 17
+  places.push(new Place(40.47859881213726, -88.96815846900026, "Roses House", .02)); // new Place object, for CVA room 17
 
   places.push(new Place(40.50622797365503, -88.99051350503431, "CVA 17", .02)); // new Place object, for CVA room 17
   places.push(new Place(40.50715473783438, -88.99173550368103, "COB", .02)); // new Place object, for COB.... JUST SWITCHED TO NEW COORDINATES
