@@ -9,7 +9,8 @@ var Dots;
 let places = [];
 let lat = 0;
 let long = 0;
-let num = 0 ;
+let num = 0;
+let myPlace = 'loading place';
 
 function preload() {
   locationData = getCurrentPosition();
@@ -70,23 +71,19 @@ function draw() {
   image(Mark, width / 2, height / 2);
   // image(avengerslogo, width/2, height/2, 900, 900);
 
+  textAlign(CENTER);
   // // iterate through the bubbles and display the objects!
   for (let i = 0; i < bubbles.length; i++) {
     bubbles[i].display();
     bubbles[i].move();
   }
 
-  for (var i = 0; i < places.length; i++) {
-    if (places[i].fence.insideFence === true) {
-      places[i].display();
-      break; //should break out of the for loop?
-      //text(places[i].desc + ' check1 ' + places[i].fence.insideFence, 10, 240 + (i * 28));
-    }
-  }
 
-  text("lat: " + lat, 100, 340);
-  text("long: " + long, 100, 360);
-    text("number of updates: " + num, 10, 380);
+  textAlign(LEFT);
+  text("lat: " + lat, 10, 340);
+  text("long: " + long, 10, 360);
+  text("number of updates: " + num, 10, 380);
+  text("place: " + myPlace, 10, 400);
 }
 
 function positionPing(position) {
@@ -97,10 +94,17 @@ function positionPing(position) {
   lat = position.latitude.toFixed(8);
   //  text("long: " + position.longitude.toFixed(8), 10, 390);
   long = position.longitude.toFixed(8);
-//  text("number of updates: " + num, 10, 440);
-  distance = calcGeoDistance(locationData.latitude, locationData.longitude, position.latitude, position.longitude, 'mi');
+  //  text("number of updates: " + num, 10, 440);
+  //  distance = calcGeoDistance(locationData.latitude, locationData.longitude, position.latitude, position.longitude, 'mi');
 
-
+  for (var i = 0; i < places.length; i++) {
+    if (places[i].fence.insideFence === true) {
+      //  places[i].display();
+      myPlace = places[i].desc;
+      break; //should break out of the for loop?
+      //text(places[i].desc + ' check1 ' + places[i].fence.insideFence, 10, 240 + (i * 28));
+    }
+  }
 
 }
 
