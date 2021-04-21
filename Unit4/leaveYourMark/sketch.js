@@ -76,6 +76,14 @@ function draw() {
     bubbles[i].move();
   }
 
+  for (var i = 0; i < places.length; i++) {
+    if (places[i].fence.insideFence === true) {
+      places[i].display();
+      break; //should break out of the for loop?
+      //text(places[i].desc + ' check1 ' + places[i].fence.insideFence, 10, 240 + (i * 28));
+    }
+  }
+  
   text("lat: " + lat, 100, 340);
   text("long: " + long, 100, 390);
     text("number of updates: " + num, 10, 440);
@@ -92,13 +100,7 @@ function positionPing(position) {
 //  text("number of updates: " + num, 10, 440);
   distance = calcGeoDistance(locationData.latitude, locationData.longitude, position.latitude, position.longitude, 'mi');
 
-  for (var i = 0; i < places.length; i++) {
-    if (places[i].fence.insideFence === true) {
-      places[i].display();
-      break; //should break out of the for loop?
-      //text(places[i].desc + ' check1 ' + places[i].fence.insideFence, 10, 240 + (i * 28));
-    }
-  }
+
 
 }
 
