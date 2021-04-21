@@ -75,8 +75,8 @@ function draw() {
     bubbles[i].move();
   }
 
-  text("lat: " + lat, 10, 340);
-  text("long: " + long, 10, 390);
+  text("lat: " + lat, 100, 340);
+  text("long: " + long, 100, 390);
 }
 
 function positionPing(position) {
