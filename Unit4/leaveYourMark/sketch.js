@@ -83,10 +83,10 @@ function draw() {
       //text(places[i].desc + ' check1 ' + places[i].fence.insideFence, 10, 240 + (i * 28));
     }
   }
-  
+
   text("lat: " + lat, 100, 340);
-  text("long: " + long, 100, 390);
-    text("number of updates: " + num, 10, 440);
+  text("long: " + long, 100, 360);
+    text("number of updates: " + num, 10, 380);
 }
 
 function positionPing(position) {
@@ -197,6 +197,6 @@ class Place {
   display() {
     //    image(reggieImg, 10, 10);
     textSize(20);
-    text("You are at " + this.desc, 10, 240);
+    text("You are at " + this.desc, 100, 400);
   }
 }
