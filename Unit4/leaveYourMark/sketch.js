@@ -9,6 +9,7 @@ var Dots;
 let places = [];
 let lat = 0;
 let long = 0;
+let num = 0 ;
 
 function preload() {
   locationData = getCurrentPosition();
@@ -77,6 +78,7 @@ function draw() {
 
   text("lat: " + lat, 100, 340);
   text("long: " + long, 100, 390);
+    text("number of updates: " + num, 10, 440);
 }
 
 function positionPing(position) {
@@ -87,7 +89,7 @@ function positionPing(position) {
   lat = position.latitude.toFixed(8);
   //  text("long: " + position.longitude.toFixed(8), 10, 390);
   long = position.longitude.toFixed(8);
-  text("number of updates: " + num, 10, 440);
+//  text("number of updates: " + num, 10, 440);
   distance = calcGeoDistance(locationData.latitude, locationData.longitude, position.latitude, position.longitude, 'mi');
 
   for (var i = 0; i < places.length; i++) {
