@@ -53,18 +53,21 @@ function gotData(data) {
 
   console.log(data); // Print the data in the console
   allnames = data ;
+  makeBubbles() ;
+}
 
+function makeBubbles() {
   // iterate through the array of data and create an object and push it on an array called bubbles
+  bubbles = [] ;
   let yaxis = 0 ;
-  for (let i = 0; i < data.length; i++) {
-    if (data[i].Hint == myLocation) {
-      bubbles.push(new Bubble(data[i].Name, data[i].Major, data[i].Quote, data[i].Hint, yaxis * 120)); // THESE Name and Shape need to match your column names in your spreadsheet!
+  for (let i = 0; i < allnames.length; i++) {
+    if (allnames[i].Hint == myLocation) {
+      bubbles.push(new Bubble(allnames[i].Name, allnames[i].Major, allnames[i].Quote, allnames[i].Hint, yaxis * 120)); // THESE Name and Shape need to match your column names in your spreadsheet!
       yaxis++ ; // only change the y axis of the next bubble if we found a bubble.
     }
   }
-
-
 }
+
 
 
 function draw() {
@@ -112,16 +115,17 @@ function positionPing(position) {
 
   if (myLocation != oldLocation) {
     // redo bubble array
-    bubbles = [] ;
-    oldLocation = myLocation ;
-    // iterate through the array of data and create an object and push it on an array called bubbles
-    let numFound = 0 ; // this is used for the y locations of the bubbles
-    for (let i = 0; i < allnames.length; i++) {
-      if (allnames[i].Hint == myLocation) {
-        bubbles.push(new Bubble(allnames[i].Name, allnames[i].Major, allnames[i].Quote, allnames[i].Hint, numFound * 120)); // THESE Name and Shape need to match your column names in your spreadsheet!
-        numFound++ ;
-        }
-    }
+    // bubbles = [] ;
+    // oldLocation = myLocation ;
+    // // iterate through the array of data and create an object and push it on an array called bubbles
+    // yaxis = 0 ; // this is used for the y locations of the bubbles
+    // for (let i = 0; i < allnames.length; i++) {
+    //   if (allnames[i].Hint == myLocation) {
+    //     bubbles.push(new Bubble(allnames[i].Name, allnames[i].Major, allnames[i].Quote, allnames[i].Hint, yaxis * 120)); // THESE Name and Shape need to match your column names in your spreadsheet!
+    //     yaxis++ ;
+    //     }
+    // }
+    makeBubbles() ;
   }
 }
 
