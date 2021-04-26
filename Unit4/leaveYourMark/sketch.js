@@ -44,7 +44,6 @@ function setup() {
   rectMode(CENTER);
   imageMode(CENTER);
 
-
 }
 
 // The data comes back as an array of objects
@@ -96,7 +95,7 @@ function draw() {
 
   fill('black');
   textSize(48);
-  text("place: " + myLocation, width / 2, 100);
+  text(myLocation, width / 2, 100);  // this prints out the location at the top
 
 }
 
@@ -115,16 +114,7 @@ function positionPing(position) {
 
   if (myLocation != oldLocation) {
     // redo bubble array
-  //  bubbles = [] ;
     oldLocation = myLocation ;
-    // // iterate through the array of data and create an object and push it on an array called bubbles
-    // yaxis = 0 ; // this is used for the y locations of the bubbles
-    // for (let i = 0; i < allnames.length; i++) {
-    //   if (allnames[i].Hint == myLocation) {
-    //     bubbles.push(new Bubble(allnames[i].Name, allnames[i].Major, allnames[i].Quote, allnames[i].Hint, yaxis * 120)); // THESE Name and Shape need to match your column names in your spreadsheet!
-    //     yaxis++ ;
-    //     }
-    // }
     makeBubbles() ;
   }
 }
