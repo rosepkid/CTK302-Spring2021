@@ -7,14 +7,16 @@ let places = [];
 let lat = 0;
 let long = 0;
 let num = 0;
+let oldLocation = '' ;
 let myLocation = 'Illinois State University';
+let allnames ;
 
 function preload() {
 
 }
 
 function setup() {
-    locationData = getCurrentPosition();
+  locationData = getCurrentPosition();
   intervalCurrentPosition(positionPing, 5000);
 
   pushPlaces();
@@ -50,11 +52,15 @@ function setup() {
 function gotData(data) {
 
   console.log(data); // Print the data in the console
+  allnames = data ;
 
   // iterate through the array of data and create an object and push it on an array called bubbles
   for (let i = 0; i < data.length; i++) {
-    bubbles.push(new Bubble(data[i].Name, data[i].Major, data[i].Quote, data[i].Hint, i * 120)); // THESE Name and Shape need to match your column names in your spreadsheet!
+    if (data[i].Hint == myLocation) {
+      bubbles.push(new Bubble(data[i].Name, data[i].Major, data[i].Quote, data[i].Hint, i * 120)); // THESE Name and Shape need to match your column names in your spreadsheet!
+    }
   }
+
 
 }
 
@@ -81,11 +87,11 @@ function draw() {
 
   fill('#d41f2d');
   noStroke();
-  rect(width/2, 0, windowWidth, 325);
+  rect(width / 2, 0, windowWidth, 325);
 
   fill('black');
   textSize(48);
-  text("place: " + myLocation, width / 2 , 100);
+  text("place: " + myLocation, width / 2, 100);
 
 }
 
@@ -101,16 +107,28 @@ function positionPing(position) {
       break; //should break out of the for loop?
     }
   }
+
+  if (myLocation != oldLocation) {
+    // redo bubble array
+    bubbles = [] ;
+    oldLocation = myLocation ;
+    // iterate through the array of data and create an object and push it on an array called bubbles
+    for (let i = 0; i < allnames.length; i++) {
+      if (allnames[i].Hint == myLocation) {
+        bubbles.push(new Bubble(allnames[i].Name, allnames[i].Major, allnames[i].Quote, allnames[i].Hint, i * 120)); // THESE Name and Shape need to match your column names in your spreadsheet!
+      }
+    }
+  }
 }
 
 // my Bubble class
 class Bubble {
 
   constructor(myName, myMajor, myQuote, myHint, y) {
-    this.name = myName.replace(/'/g,''); // .replace(/'/g,'') strips the apostrophes out
-    this.major = myMajor.replace(/'/g,'');
-    this.quote = myQuote.replace(/'/g,'');
-    this.place = myHint.replace(/'/g,'');
+    this.name = myName.replace(/'/g, ''); // .replace(/'/g,'') strips the apostrophes out
+    this.major = myMajor.replace(/'/g, '');
+    this.quote = myQuote.replace(/'/g, '');
+    this.place = myHint.replace(/'/g, '');
     this.pos = createVector(width / 2, y);
     this.vel = createVector(0, -3);
   }
@@ -125,13 +143,10 @@ class Bubble {
       text(this.major, this.pos.x, this.pos.y);
       text(this.quote, this.pos.x, this.pos.y + 25);
       text(this.place, this.pos.x, this.pos.y + 50);
+
     } else {
       fill('grey');
     }
-
-
-
-
   }
 
   move() {
