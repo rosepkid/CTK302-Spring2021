@@ -115,8 +115,8 @@ function positionPing(position) {
 
   if (myLocation != oldLocation) {
     // redo bubble array
-    // bubbles = [] ;
-    // oldLocation = myLocation ;
+  //  bubbles = [] ;
+    oldLocation = myLocation ;
     // // iterate through the array of data and create an object and push it on an array called bubbles
     // yaxis = 0 ; // this is used for the y locations of the bubbles
     // for (let i = 0; i < allnames.length; i++) {
