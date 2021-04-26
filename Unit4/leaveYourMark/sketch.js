@@ -8,7 +8,7 @@ let lat = 0;
 let long = 0;
 let num = 0;
 let oldLocation = '' ;
-let myLocation = 'Illinois State University';
+let myLocation = "Illinois State University";
 let allnames ;
 
 function preload() {
@@ -123,10 +123,10 @@ function positionPing(position) {
 class Bubble {
 
   constructor(myName, myMajor, myQuote, myHint, y) {
-    this.name = myName.replace(/'/g, ''); // .replace(/'/g,'') strips the apostrophes out
-    this.major = myMajor.replace(/'/g, '');
-    this.quote = myQuote.replace(/'/g, '');
-    this.place = myHint.replace(/'/g, '');
+    this.name = myName ; //.replace(/'/g, ''); // .replace(/'/g,'') strips the apostrophes out
+    this.major = myMajor ; //.replace(/'/g, '');
+    this.quote = myQuote ; //.replace(/'/g, '');
+    this.place = myHint; // .replace(/'/g, '');
     this.pos = createVector(width / 2, y);
     this.vel = createVector(0, -3);
   }
@@ -160,10 +160,10 @@ class Bubble {
 
 
 function pushPlaces() {
-  places.push(new Place(40.19580389554057, -88.41188678700051, "Laurens House", .02)); // new Place object, for CVA room 17
-  places.push(new Place(40.512216613792866, -88.98539072302248, "Rafaels House", .02)); // new Place object, for CVA room 17
-  places.push(new Place(40.53556089911177, -88.9757035113809, "Seans House", .02)); // new Place object, for CVA room 17
-  places.push(new Place(40.47859881213726, -88.96815846900026, "Roses House", .02)); // new Place object, for CVA room 17
+  places.push(new Place(40.19580389554057, -88.41188678700051, "Lauren's House", .02)); // new Place object, for CVA room 17
+  places.push(new Place(40.512216613792866, -88.98539072302248, "Rafael's House", .02)); // new Place object, for CVA room 17
+  places.push(new Place(40.53556089911177, -88.9757035113809, "Sean's House", .02)); // new Place object, for CVA room 17
+  places.push(new Place(40.47859881213726, -88.96815846900026, "Rose's House", .02)); // new Place object, for CVA room 17
   places.push(new Place(40.50622797365503, -88.99051350503431, "CVA 17", .02)); // new Place object, for CVA room 17
   places.push(new Place(40.50715473783438, -88.99173550368103, "COB", .02)); // new Place object, for COB.... JUST SWITCHED TO NEW COORDINATES
   places.push(new Place(40.510824736433904, -88.99134151266699, "ISU College Bridge", .02)); // new Place object, for ISU bridge over College Ave
