@@ -10,7 +10,9 @@ let num = 0;
 let oldLocation = '';
 let myLocation = "Illinois State University";
 let allnames;
-let lastLine = 0 ;
+let lastLine = 0;
+let myString = "";
+let y = 0;
 
 let numberOfTouches;
 let alreadyMadeAllBubbles = false;
@@ -47,7 +49,7 @@ function setup() {
   ellipseMode(CENTER);
   rectMode(CENTER);
   // imageMode(CENTER);
-
+  y = height;
 }
 
 // The data comes back as an array of objects
@@ -69,7 +71,7 @@ function makeBubbles() {
       yaxis++; // only change the y axis of the next bubble if we found a bubble.
     }
   }
-  lastLine = yaxis * 120 ;
+  lastLine = yaxis * 120;
 }
 
 function makeAllBubbles() {
@@ -77,16 +79,18 @@ function makeAllBubbles() {
   if (allnames === undefined) {
     console.log("loading names");
   } else {
-    alreadyMadeAllBubbles = true ;
+    myString = "";
+    alreadyMadeAllBubbles = true;
     bubbles = [];
     let yaxis = 0;
     for (let i = 0; i < allnames.length; i++) {
       //  if (allnames[i].Hint == myLocation) {
-      bubbles.push(new Bubble(allnames[i].Name, allnames[i].Major, allnames[i].Quote, allnames[i].Hint, yaxis * 120)); // THESE Name and Shape need to match your column names in your spreadsheet!
-      yaxis++; // only change the y axis of the next bubble if we found a bubble.
+      //      bubbles.push(new Bubble(allnames[i].Name, allnames[i].Major, allnames[i].Quote, allnames[i].Hint, yaxis * 120)); // THESE Name and Shape need to match your column names in your spreadsheet!
+      //      yaxis++; // only change the y axis of the next bubble if we found a bubble.
+      myString = myString + allnames[i].Name + "\n" + allnames[i].Major + "\n" + allnames[i].Quote + "\n" + allnames[i].Hint+ "\n\n" ;
       //    }
     }
-      lastLine = yaxis * 120 ;
+    lastLine = yaxis * 120;
   }
 
 
@@ -118,8 +122,8 @@ function draw() {
     case 0:
       // alreadyMadeAllBubbles = false;
       // test to make sure you're not displaying all bubbles
-      if ((bubbles.length == allnames.length)&&(alreadyMadeAllBubbles)) {
-        makeBubbles() ;
+      if ((bubbles.length == allnames.length) && (alreadyMadeAllBubbles)) {
+        makeBubbles();
         alreadyMadeAllBubbles = false;
       }
       push();
@@ -145,16 +149,19 @@ function draw() {
       // makeBubbles();
       if (alreadyMadeAllBubbles == false) {
         makeAllBubbles();
-  //      alreadyMadeAllBubbles = true;
+        //      alreadyMadeAllBubbles = true;
       }
 
       push();
       textSize(24);
       // iterate through the bubbles and display the objects if their places match myPlace!
-      for (let i = 0; i < bubbles.length; i++) {
-        bubbles[i].display();
-        bubbles[i].move();
-      }
+      // for (let i = 0; i < bubbles.length; i++) {
+      //   bubbles[i].display();
+      //   bubbles[i].move();
+      // }
+      text(myString, width/2, y, 300, 5000);
+      y-=3;
+      // if (y < -totalHeight)
       pop();
       break;
   }
@@ -195,15 +202,15 @@ class Bubble {
 
   display() {
 
-//    if (myLocation == this.place) {
-      fill('white');
-      // textFont(f1);
-      text(this.name, this.pos.x, this.pos.y - 25);
-      text(this.major, this.pos.x, this.pos.y);
-      text(this.quote, this.pos.x, this.pos.y + 25);
-      text(this.place, this.pos.x, this.pos.y + 50);
+    //    if (myLocation == this.place) {
+    fill('white');
+    // textFont(f1);
+    text(this.name, this.pos.x, this.pos.y - 25);
+    text(this.major, this.pos.x, this.pos.y);
+    text(this.quote, this.pos.x, this.pos.y + 25);
+    text(this.place, this.pos.x, this.pos.y + 50);
 
-//    }
+    //    }
   }
 
 
